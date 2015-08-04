@@ -1,0 +1,10 @@
+# 454 data processing 
+
+# activiate Qiime 1.8
+. /opt/share/software/packages/qiime-1.8.0/Activation_scripts/parallel/mpipzQIIME_1.8.0_new_parallel.s
+
+# copy data to 1_inputfiles
+
+# validate mapping file
+
+validate_mapping_file.py -m 2_mapping_file/958_mapping.txt -o 2_mapping_file/

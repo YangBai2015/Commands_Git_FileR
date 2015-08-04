@@ -19,14 +19,6 @@ $ git config --global credential.helper osxkeychain
 
 $ git clone https://github.com/YangBai2015/Spoon-Knife.git
 
-# Verify remote repository 
-
-$ git remote -v
-
-# Sync with upstream (original distributer) repo
-
-$ git remote add upstream https://github.com/octocat/Spoon-Knife.git
-
 # add a file to local repo. twitter.txt is used as an example here. 
 
 $ git add twitter.txt
