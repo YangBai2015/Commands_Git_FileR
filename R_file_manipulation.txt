@@ -1,0 +1,17 @@
+# check wether files or directories are there
+
+file.exists("./data") # return TRUE of FALSE
+
+# create a directory
+
+dir.create("./characters")
+
+# download a file and record the date when downloading. Example are as below
+
+fileUrl <- "https://d396qusza40orc.cloudfront.net/getdata%2Fdata%2Fss06hid.csv"
+download.file(url=fileUrl, destfile="microSuvey.csv", method="curl") 
+dateDownload <- date()
+
+# list files in a directory
+
+list.files("./data")

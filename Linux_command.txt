@@ -1,0 +1,29 @@
+# log in MPI server with VPN at home
+ssh dell-node-2.mpipz.mpg.de -l bai
+# log in MPI server with VPN with MPI wifi
+ssh bai@dell-node-2 
+
+pwd # print working directory
+cd  # change directory
+ls  # list directory contents
+file    # show brief explanation of files
+less    # read a text file (h is to show help page)
+cp  # copy
+mv  # move/rename
+mkdir   #create directories
+rm  # remove 
+ln  # reate hard and symbolic links
+mkdir   # create directories
+type    # display type of commands (programs in /bin, shell builtin or function)
+help + command  # show help for shell builtin
+command --help  # show help for programs in /bin
+man + command   # show manual for programs in /bin
+what is + command   # show a brief discription of a command
+alias # construct self-made command. i.g. alias foo='cd ..; ls; cd-'ls
+unalias # remove alias
+
+
+
+
+
+ 

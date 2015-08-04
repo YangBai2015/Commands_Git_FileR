@@ -1,0 +1,26 @@
+### example of lubridate package in R
+
+# today () and now () return day-time variable in POSIXct format.
+today()
+now()
+now("America/New_York") # we can set time zone
+
+# year(), month(), day(), wday(variable, label=TURE), hour(), minute(), second() extract element from POSIXct format variable
+
+# ymd(), dmy(), hms(), ymd_hms(), etc. parse character variables and return POSIXct format variable.
+
+# update() is to make changes in POSIXct format variables
+this_moment <- update(this_moment, hours=hour(now()), minutes=minute(now()))
+
+# arithmetic operation
+depart <- nyc + days(2)
+arrive <- depart + hours(15) + minutes(50)
+
+# with_tz() is to set time zone
+arrive <- with_tz(arrive, tzone="Asia/Hong_Kong")
+
+# new_interval () is to set an object with start time and end. it can be used with as.period() to calculate time intervel
+how_long <- new_interval(last_time, arrive)
+as.period(how_long)
+
+

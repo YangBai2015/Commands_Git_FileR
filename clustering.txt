@@ -1,0 +1,25 @@
+# clustering is a method to study multidimensional data. Clustering is a hot topic and contain many methods.
+####### Hierarchical clustering is a bottom-up method
+# each observation is a cluster, the closest observation is grouped into up-level cluster etc...
+# distance or similarity is used to determine how "close" two observations. distance include "Euclidean" and "Manhattan" distance.
+# dist() is to calculate pairwise distance
+distxy <- dist(dataFrame) # the default method is "Euclidean".
+
+# hclust () is to to hierarchical clustering
+hc <- hclust(distxy) # the following two methods are popular in hierarchical clustering. 
+# complete linkage and average linkage are two common methods to calculate distance between high-level cluster.
+# complete linkage takes the greatest distance between pairs of each representative point in two high-level clusters. 
+# average linkage first calculates an average point of each cluster, by computing mean of each variable from each point (eg. average of x, average of y). 
+
+# dendrogram can be plotted by plot(), and it is better to use dendrogram subject
+plot(as.dendrogram(hc))
+
+######## heatmap tutorial : http://sebastianraschka.com/Articles/heatmaps_in_r.html#clustering
+
+######## k-means clustering is a top-down method. we need to specify the number of clusters, and we need to check with different tries.  
+kmeans(x=dataMatrix, centers=4)
+
+
+
+
+######## PCA tutorial:http://arxiv.org/pdf/1404.1100.pdf

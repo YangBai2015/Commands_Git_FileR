@@ -1,0 +1,48 @@
+# Configure username and email. The username and email must be the same with username and email used in github account.
+
+$ git config --global user.name ""
+$ git config --global use.email ""
+
+# check username and email
+
+$ git config --list
+
+# Find out if the osxkeychain credential helper is already installed. 
+
+$ git credential-osxkeychain
+
+# Tell Git to use osxkeychain using the global credential.helper config
+
+$ git config --global credential.helper osxkeychain
+
+# Fork a remote repo from github. Repo "Spoon-Knife.git" is used as an example here. 
+
+$ git clone https://github.com/YangBai2015/Spoon-Knife.git
+
+# Verify remote repository 
+
+$ git remote -v
+
+# Sync with upstream (original distributer) repo
+
+$ git remote add upstream https://github.com/octocat/Spoon-Knife.git
+
+# add a file to local repo. twitter.txt is used as an example here. 
+
+$ git add twitter.txt
+
+# commit a file to local repo
+
+git commit -m twitter.txt
+
+# put a file from local repo to Github. Repo, Spoon-Knife, is used as an example here.
+
+git push https://github.com/YangBai2015/Spoon-Knife
+
+# remove a local repo. Just delete it
+
+rm -rf 
+
+
+
+

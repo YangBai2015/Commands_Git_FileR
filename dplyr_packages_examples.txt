@@ -1,0 +1,59 @@
+# usage of "dplyr" package in R
+
+mydf <- read.csv(path2csv, stringsAsFactors = FALSE) # make a data frame
+cran <- tbl_df(mydf)  # load the data from into the package format
+
+## five functions in dplyr packages. select(), filter(), arrange(), mutate(), and summarize().
+
+# select () is to select columns
+
+select(cran, ip_id, package, country) # cran is the tbl_df, ip_id, package, and country are columns.
+
+# filter () is to select rows. subset() is similar to filter () 
+
+filter(cran, r_version== "3.1.1", country == "US") # "AND" operation. 
+filter(cran, country == "US" | country == "IN") # "OR" operation.
+
+# arrange () is to order rows according to variables' values
+
+arrange(cran2, country, desc(r_version), ip_id) # three variables
+
+# mutate () is to generate a new variable based on existing variable
+
+mutate(cran3, size_mb = size/2^20, size_gb = size_mb/2^10) # oh my god, a line to calculation
+
+# summarize () is to summarize certain variables. it is very helpful with grouped data
+
+summarize(cran, avg_bytes=mean(size))
+
+## other functions
+
+# group is just a step to change variable to "factor" conceptually. 
+
+by_package <- group_by(cran, package)
+
+# summarize () after group_by ()
+
+pack_sum <- summarize(by_package,
+                      count = n(),
+                      unique = n_distinct(ip_id),
+                      countries = n_distinct(country),
+                      avg_bytes = mean(size))
+
+
+# View () is to check the whole dataset
+
+View(top_counts)
+
+# chaining. %>% is the key operator, to link left and right function. 
+# please note that we do not need to specify the data tbl
+
+cran %>%
+  select(ip_id, country, package, size) %>%
+    mutate(size_mb = size / 2^20) %>%
+        filter(size_mb <= 0.5) %>%
+            arrange(desc(size_mb))%>%
+                print()
+
+
+

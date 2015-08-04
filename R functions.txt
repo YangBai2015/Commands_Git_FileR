@@ -1,0 +1,199 @@
+# read.table template
+activity <- read.table("activity.csv", sep=“,”, head=T, stringsAsFactors=F, na.strings="")
+
+# write.table template
+write.table (df, file="mapping_IRL2.txt", sep="\t", row.names=F, quote=F)
+
+# add new column
+activity_new[,5] <- character(0)
+names(activity_new)[5] <- "weekdays"
+
+# remove column
+df[,5] <- NULL
+
+# mean without NA
+mean_totoal_day <- mean (total_day, na.rm=T)
+
+# count NA
+sum(is.na(activity[,1]))
+
+# data.frame value finding
+max_steps <- max (summary.steps[,1])
+index=which(summary.steps[,1]==max_steps)
+max <- summary.steps[index,2]
+
+#Performs unique, union, intersection, difference, equality on one or two vectors. 
+
+unique(x)
+union(x, y)
+intersect(x, y)
+setdiff(x, y)
+setequal(x, y)
+
+# R regular expression
+/Users/Yang/Commands_Git_FileR/R_package_documents/R_regular_expression.pdf
+
+# grep() is to select matches in a string or vector
+grep("[nco]", c("nose", "letter38", "window9", "apple0"), value = TRUE)
+
+# gsub() is to replace characters in a string
+gsub(patter=”e”, replacement=“”, “greup”)
+
+# for loop, if and %in%
+for (i in 1:length(storm[,26])))
+{
+    if (is.na(storm[i,26]))
+    {
+    	storm[i,39] <- 0 
+    } 
+    else if (storm[i,26]=="K")
+    {
+        storm[i,39] <- 1000
+    }   
+}
+
+
+
+
+# aggregate but not tapply, and return a dataframe.
+summary.mtc1 <- aggregate (mtc$wt, list(mtc$gear), na.rm=T, mean)
+
+# quantile(x, probs = seq(0,1,0.25)) is to calculate how many percentage of data ....
+quantile(ppm)
+
+# quantile () with cut ()
+cutpoints <- quantile(diamonds$carat, seq(0,1,length=4), na.rm=TRUE)
+diamonds$car2 <- cut(diamonds$carat, cupoints)
+
+# round() is to round numbers
+round(1.3472261, 2)
+
+# choose (n, m) is to choose m from n.
+
+pbinom (6, size=10, prob=0.5, low.tail =FALSE)
+
+# convert some df value (eg. "foo") to NA
+df[ df == "foo" ] = NA # or change this string to na when read it into R
+df <- read.csv("file.csv", na.strings = c("foo", "bar"))
+
+# read and write fasta files in R
+library("seqinr")
+ncrna <- read.fasta(file = "01-L054620-079-017-954-8.fasta")
+write.fasta(sequences = ncrna, names="Yang", nbchar=60, file.out="Yang_test.fasta")
+details are in /Users/Yang/Commands_Git_FileR/R_package_documents/seqinr.pdf
+
+
+
+
+
+
+############# base plotting system
+
+# par() is to arrange multiple plots and margin, and par() can also be used to check all options.
+par(mfrow=c(1,3), mar=c(4,4,2,1))
+
+# histomgram()
+hist(ppm, col="green", breaks=10)
+rug(ppm)
+
+# boxplot() is to make boxplot
+boxplot(Ozone~Month, data=airquality, xlab="Month", ylab="Ozone (ppb)", col.axis="blue", col.lab="red")
+
+# plot() is to produce scatter plot
+with(cars, plot(speed, dist), type="p")
+ 
+# barplot()
+barplot(reg, col="wheat", main="Number of Counties in Each Region")
+
+# abline()
+abline(v=median(ppm), col="magenta", lwd=4)
+
+# points() is to add points
+points(may$Wind, may$Ozone, col="blue", pch=17)
+
+# heatmap ()
+heatmap(mt) # mt is a dataframe.
+
+
+
+# title () is to annotate plot title
+title (main="Old Faithful Geyser data")
+
+# mtext () is to add main title
+mtext("Ozone and Weather in New York City", outer=TRUE)
+
+# legend () is to use add legend
+legend("topright", pch=c(17,8), col=c("blue","red"), legend=c("May", "Other Months"))
+
+# text() is to put text in particular "coordinates". 
+text(mean(cars$speed), max(cars$dist), "SWIRL rules!")
+
+
+############### lattice plotting system
+
+library(lattice)
+
+# xyplot()
+xyplot(Ozone ~ Wind | as.factor(Month), data = airquality, layout=c(5,1))
+
+# panel control
+p2 <- xyplot(y ~ x | f, panel = function(x, y, ...) {
+  panel.xyplot(x, y, ...)  ## First call default panel function
+  panel.lmline(x, y, col = 2)  ## Overlay a simple linear regression line
+})
+print(p2)
+
+# power of lattice system is to check multivariate data
+
+xyplot(price~carat | color*cut, data=diamonds, pch=20, xlab=myxlab, ylab=myylab, main=mymain)
+
+
+################ ggplot2 plotting system
+# qplot(), different plots
+qplot(hwy, data=mpg, fill=drv, binwidth=2) # histograms. Subseted by drv. 
+qplot(hwy, data=mpg, fill=drv, binwidth=2, geom="density") # density plot is a better to visualise data distribution in groups. 
+qplot(displ, hwy, data=mpg, color=drv, geom=c("point", "smooth")) # scatter plot
+qplot(y=hwy, data=mpg, color=drv) # scatter plot with one variable
+qplot(drv, hwy, data=mpg, geom="boxplot") # boxplot
+qplot(drv, hwy, data=mpg, geom="boxplot", color=manufacturer) # boxplot with subgrouped with another factor
+
+# qplot(), panels. ggplot2 rule is facets = ##row ~ column##
+qplot(displ, hwy, data=mpg, facets= .~drv)
+
+
+# ggplot() give flexibility for plotting
+## histogram
+ggplot (mtc, aes(x=factor(gear))) + geom_bar(stat=“bin”) # histogram
+## bar plot with sd 
+summary.mtc1 <- aggregate (mtc$wt, list(mtc$gear), na.rm=T, mean)
+summary.mtc1.2 <- aggregate (mtc$wt, list(mtc$gear), na.rm=T, sd)
+summary.mtc2 <- data.frame(gear=summary.mtc1[,1], meanwt=summary.mtc1[,2], sd=summary.mtc1.2[,2])
+summary.mtc2
+ggplot(data=summary.mtc2, aes(x=as.factor(gear), y=meanwt)) + 
+    geom_bar(stat="identity",fill="darkblue") +
+    geom_errorbar(aes(ymin=(meanwt-sd), ymax=(meanwt+sd)), width=.1, color="darkblue")
+
+
+##
+g <- ggplot(mpg, aes(displ,hwy))
+g+geom_point()+geom_smooth(method="lm")+facet_grid(.~drv) # simple one
+
+g+geom_point(size=4, alpha=1/2,aes(color=drv)) + labs(title="Swirl Rules!") + labs(x="Displacement", y="Hwy Mileage") # subseted by color
+
+g+geom_point(aes(color=drv), size=2, alpha=1/2) + geom_smooth(size=4, linetype=3, method="lm", se=FALSE) # customise line for lm model
+
+g+geom_point(aes(color=drv)) + theme_bw (base_family="Times") # change background
+
+g+geom_line()+coord_cartesian(ylim=c(-3,3)) # set limit of y-axis 
+
+# the last complex example in the swirl
+g+geom_point()+facet_grid(drv~cyl, margins=TRUE) + geom_smooth(method="lm", se=FALSE, size=2, color="black")+labs(x="Displacement", y="Highway Mileage", title="Swirl Rules!")
+
+
+# print R environment
+sessionInfo()
+
+
+
+
+
