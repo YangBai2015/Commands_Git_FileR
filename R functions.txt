@@ -1,3 +1,6 @@
+# run R script in the terminal
+Rscript test.R
+
 # read.table template
 activity <- read.table("activity.csv", sep=“,”, head=T, stringsAsFactors=F, na.strings="")
 
@@ -53,6 +56,22 @@ for (i in 1:length(storm[,26])))
 }
 
 
+# tryCatch () and if for error control
+for (folder in folders)
+{
+    folder
+    sequence <- tryCatch(sequence <- read.fasta(file = path_contigs), error = function(e) e)
+    if ("error" %in% class(sequence)) 
+    {
+        next
+    } 
+    sequence
+    write.fasta(sequences = combined_fasta, names=names(combined_fasta), nbchar=60, file.out=paste(Path_folder_5,"all_sequences_assembled.fasta",sep=""))      
+}
+
+
+# paste() is to concatenate strings
+file_name <- paste("./Sanger_data_organized/", sequence_name_2,".fasta", sep="")
 
 
 # aggregate but not tapply, and return a dataframe.

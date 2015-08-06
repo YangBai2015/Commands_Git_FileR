@@ -1,10 +1,26 @@
-# check wether files or directories are there
-
-file.exists("./data") # return TRUE of FALSE
+# use system command
+system("ls")
 
 # create a directory
-
 dir.create("./characters")
+
+# list files in a directory
+list.files("./data")
+
+# rename files 
+file.rename("./testfolder/", "Sanger_data")
+
+# copy files
+file.copy(from, to, overwrite = recursive, recursive = FALSE, copy.mode = TRUE, copy.date = FALSE)
+
+# remove files or directories
+file.remove("./Sanger_data/Sanger_data_organized/")
+
+# check wether files or directories are there
+file.exists("./Sanger_data/01-L054621w-079-017-954-9.fasta") # return TRUE of FALSE
+
+
+
 
 # download a file and record the date when downloading. Example are as below
 
@@ -12,6 +28,3 @@ fileUrl <- "https://d396qusza40orc.cloudfront.net/getdata%2Fdata%2Fss06hid.csv"
 download.file(url=fileUrl, destfile="microSuvey.csv", method="curl") 
 dateDownload <- date()
 
-# list files in a directory
-
-list.files("./data")
